@@ -13,6 +13,11 @@ public class ComputeService {
 
     @HystrixCommand(fallbackMethod = "addServiceFallback")
     public String addService() {
+        try {
+            Thread.sleep(10000);
+        }catch (Exception e){
+
+        }
         return restTemplate.getForEntity("http://COMPUTE-SERVICE/add?a=10&b=20", String.class).getBody();
     }
 
